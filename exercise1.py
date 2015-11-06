@@ -12,6 +12,7 @@ __copyright__ = "2015 Susan Sim"
 __license__ = "MIT License"
 
 
+
 def pig_latinify(word):
     """
     Describe your function
@@ -23,4 +24,18 @@ def pig_latinify(word):
     """
     result = ""
 
+    word =  raw_input("Enter your word: ")
+
+    if word[0] == "a" or word[0] == "e" or \
+    word[0] == "i" or word[0] == "o" or \
+    word[0] == "u":
+        print word + "yay"
+    elif word[0] != "a" or word[0] != "e" or \
+    word[0] != "i" or word[0] != "o" or \
+    word[0] != "u":
+        print word[1:len(word)] + word[0] + "ay"
+
     return result
+
+
+pig_latinify("hello")
