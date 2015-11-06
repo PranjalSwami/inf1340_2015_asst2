@@ -13,12 +13,7 @@ VOWELS = ["a","e","i","o","u"]
 
 def pig_latinify(word):
     """
-    Determine if word starts with a vowel or consonant.
-    If it starts with a vowel, we append "yay" to the end of the word and return the word.
-    Otherwise (it starts with a consonant), we remove all the consonants from the beginning
-    of the word up until the first vowel (not removing the vowel). Then we add all these removed
-    consonants to the end, and append "ay" after the consonants. Any input that is not all alphabetic
-    characters or those without vowels will raise a value error.
+ 
     :param : word should be a string
     :return: the pig-latinified word as a string
     :raises: ValueError
