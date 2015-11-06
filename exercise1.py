@@ -1,9 +1,7 @@
-#!/usr/bin/env python
+##!/usr/bin/env python
 
 """ Assignment 2, Exercise 1, INF1340, Fall, 2015. Pig Latin
-
 This module converts English words to Pig Latin words
-
 """
 
 __author__ = 'Susan Sim'
@@ -11,31 +9,34 @@ __email__ = "ses@drsusansim.org"
 __copyright__ = "2015 Susan Sim"
 __license__ = "MIT License"
 
-
+VOWELS = ["a","e","i","o","u"]
 
 def pig_latinify(word):
     """
-    Describe your function
-
-    :param :
-    :return:
-    :raises:
-
+    Determine if word starts with a vowel or consonant.
+    If it starts with a vowel, we append "yay" to the end of the word and return the word.
+    Otherwise (it starts with a consonant), we remove all the consonants from the beginning
+    of the word up until the first vowel (not removing the vowel). Then we add all these removed
+    consonants to the end, and append "ay" after the consonants. Any input that is not all alphabetic
+    characters or those without vowels will raise a value error.
+    :param : word should be a string
+    :return: the pig-latinified word as a string
+    :raises: ValueError
     """
-    result = ""
 
-    word =  raw_input("Enter your word: ")
+    pyg = 'ay'
+    pyg_yay = "yay"
+    original = raw_input('Enter a word:')
+    if len(original) > 0 and original.isalpha():
+        word = original.lower()
+        first = word[0]
+        if "aeiou".find(first) != -1:
+            new_word = word + pyg_yay
+            print new_word
+        else:
+            new_word = word[1:len(word)] + first + pyg
+            print new_word
+    else:
+        print 'Entry did not contain all letters'
 
-    if word[0] == "a" or word[0] == "e" or \
-    word[0] == "i" or word[0] == "o" or \
-    word[0] == "u":
-        print word + "yay"
-    elif word[0] != "a" or word[0] != "e" or \
-    word[0] != "i" or word[0] != "o" or \
-    word[0] != "u":
-        print word[1:len(word)] + word[0] + "ay"
-
-    return result
-
-
-pig_latinify("hello")
+pig_latinify("word")
