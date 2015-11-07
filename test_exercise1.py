@@ -23,5 +23,7 @@ def test_basic():
     assert pig_latinify("scratch") == "atchscray"
     assert pig_latinify("is") == "isyay"
     assert pig_latinify("apple") == "appleyay"
+    assert pig_latinify("34apple") == "Error: This input contains numbers or non-letter characters"
+    assert pig_latinify(33434343) == "Error: This input contains numbers or non-letter characters"
 
 
