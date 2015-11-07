@@ -32,7 +32,7 @@ MANAGERS = [["Number", "Surname", "Age"],
 # HELPER FUNCTIONS ##
 #####################
 def is_equal(t1, t2):
-    return set(map(tuple, t1)) == set(map(tuple, t2))
+    return t1.sort() == t2.sort()
 
 
 ###################

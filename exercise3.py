@@ -23,7 +23,18 @@ def union(table1, table2):
     :raises: MismatchedAttributesException:
         if tables t1 and t2 don't have the same attributes
     """
-    return []
+    is_same_schema = check_same_schema(table1, table2)
+    if is_same_schema == False:
+        raise MismatchedAttributesException("Schemas do not match")
+
+    # Adds contents of table1 and table2 into a single list. This addition might contain duplicates
+    union_table = table1 + table2
+
+    # Some duplicates will be here. Remove them
+    union_table = remove_duplicates(union_table)
+
+    return union_table
+
 
 
 def intersection(table1, table2):
@@ -31,7 +42,28 @@ def intersection(table1, table2):
     Describe your function
 
     """
-    return []
+    def intersection(table1, table2):
+    """
+     Perform the intersection set operation on tables, table1 and table2.
+
+    """
+    is_same_schema = check_same_schema(table1, table2)
+    if not is_same_schema:
+        raise MismatchedAttributesException("Schemas do not match")
+
+    # Intersection means: only add rows in table1 that also exist in table2
+    index = 0
+    result_table = []
+    for table1_row in table1:
+        is_row_in_table2 = check_row_in_table(table2, table1_row)
+        # If row in table1 is also present in table2, it's an intersection. Add it to result table
+        if is_row_in_table2:
+            result_table.append(table1_row)
+
+        index += 1
+
+    return result_table
+
 
 
 def difference(table1, table2):
